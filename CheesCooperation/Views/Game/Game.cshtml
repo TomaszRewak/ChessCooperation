@@ -1,0 +1,59 @@
+﻿@model CheesCooperation.Models.GameModel
+
+@{
+	Layout = "~/Views/Shared/_GameLayout.cshtml";
+	ViewBag.Title = "Game";
+}
+
+@section scripts{
+	@Scripts.Render("~/bundles/jqueryui")
+
+	<script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>
+
+	<script src="~/signalr/hubs"></script>
+
+	@Scripts.Render("~/bundles/gamescripts")
+}
+
+@section styles{
+	@Styles.Render("~/Content/gamecss")
+}
+
+<div class="row" id="windowHolder">
+	@*<div class="col-xs-2" id="historyHolder">
+		</div>*@
+	<div class="" id="gameHolder"> <!-- classes are set in js -->
+		<div id="boardPlaceholder">
+			<div id="boardPlaceholderText">
+				connecting...
+			</div>
+		</div>
+		<div id="boardCanvas">
+		</div>
+	</div>
+	<div id="gameInfoHidden">
+		<div class="timer">---</div>
+		<button id="showChat" onclick="hideChatButtonClicked()">Show chat</button>
+		<button onclick="goToMenuButtonClick()">Menu</button>
+	</div>
+	<div class="" id="chatHolder"> <!-- classes are set in js -->
+		<div id="gameInfoShown">
+			<div class="timer">---</div>
+			<button id="hideChat" onclick="hideChatButtonClicked()">Hide chat</button>
+			<button onclick="goToMenuButtonClick()">Menu</button>
+		</div>
+		<div id="chat">
+
+		</div>
+
+		<form id="chatForm">
+			<input id="chatInput" type="text" autocomplete="off">
+			<button id="chatSubmit" type="submit">Send</button>
+		</form>
+	</div>
+</div>
+
+<script type="text/javascript">
+	var gameName = @Html.Raw(Json.Encode(Model.GameName));
+	var isPlayer = @Html.Raw(Json.Encode(Model.WantsToBePlayer));
+</script>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<CheesCooperation.Models.MenuModel>
+@{
+    ViewBag.Title = "Home";
+	ViewBag.Description = "Play with friends real time chess. See all their moves as if your were sitting at the same table. It's that simple, and completely free. No account required.";
+	ViewBag.Keywords = "Chess, Real time, Free, No account, Live, Game";
+}
+
+<div class="jumbotron">
+	<h1>Real time chess</h1>
+	<p class="lead">Play with friends as if you were face to face.</p>
+	<p>@Html.ActionLink("Create new game", "NewGame", "Game", new {}, new { @class = "btn btn-primary btn-lg" })</p>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<form action="~/Game/Game" method="get">
+			<input name="player" type="hidden" value="true" />
+			<input name="gameName" id="hiddenGameName" type="text" placeholder="Hidden game name" />
+			<button class="joinButton" type="submit">Join hidden game</button>
+		</form>
+	</div>
+		@foreach (var game in Model)
+		{
+			<div class="col-sm-3 menuGame">
+				<div class="gameInfo">
+					<h4>@game.Name</h4>
+					<div style="position:relative">
+						<table class="menuBoard" name="viewport">
+							@for (int i = 0; i < 8; i++)
+							{
+								<tr>
+									@for (int j = 0; j < 8; j++)
+									{
+										<td class="@((i + j) % 2 == 0 ? "boardSquare boardWhiteSquare" : "boardSquare")">
+											<div class="piece">
+												@game.Board[j, 7 - i]
+											</div>
+										</td>
+									}
+								</tr>
+							}
+						</table>
+					</div>
+				</div>
+				<form action="~/Game/Game" method="get">
+					<input name="player" type="hidden" value="false" />
+					<input name="gameName" type="hidden" value="@game.Name" />
+					<button class="joinButton" type="submit">Spectate</button>
+				</form>
+				<form action="~/Game/Game" method="get">
+					<input name="player" type="hidden" value="true" />
+					<input name="gameName" type="hidden" value="@game.Name" />
+					<button class="joinButton joinButtonSpaced" disabled="@(!game.CanJoin)" type="submit">Join game</button>
+				</form>
+			</div>
+		}
+</div>

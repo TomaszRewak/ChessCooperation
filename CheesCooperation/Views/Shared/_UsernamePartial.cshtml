@@ -1,0 +1,4 @@
+﻿<ul class="nav navbar-nav navbar-right">
+	<li>@Html.TextBox("user_name", Request.Cookies["user_name"] != null ? Request.Cookies["user_name"].Value : "Guest")</li>
+    <li>@Html.ActionLink("Change name", "", "", routeValues: null, htmlAttributes: new { id = "changeNameLink" })</li>
+</ul>

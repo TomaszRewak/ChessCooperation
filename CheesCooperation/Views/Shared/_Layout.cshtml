@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Time Chess</title>
+    <meta name="description" content="Play chess with your friends as if you were face to face. See all their moves in the real time and let them see yours. No account required." />
+    <meta name="keywords" content="chess, real time" />
+    <meta name="author" content="Tomasz Rewak" />
+    <meta name="application-name" charset="Real Time Chess" />
+    <meta name="google-site-verification" content="DWZTlrqP2CE7Kp0B9bDPGyOT0OJGNtMiFaUmG9mQY8E" />
+    @Styles.Render("~/Content/css")
+	@Styles.Render("~/Content/menucss")
+    @Scripts.Render("~/bundles/modernizr")
+
+	@if (ViewBag.Description != null)
+	{
+		<meta name="description" content="@ViewBag.Description" />
+	}
+	@if (ViewBag.Keywords != null)
+	{
+		<meta name="keywords" content="@ViewBag.Keywords" />
+	}
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Real time chess", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                @Html.Partial("_UsernamePartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Tomasz Rewak and associates</p>
+        </footer>
+    </div>
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+	@Scripts.Render("~/bundles/analytics")
+	@Scripts.Render("~/bundles/menuscripts")
+	@RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,56 @@
+﻿@model CheesCooperation.Models.NewGameModel
+
+@{
+    ViewBag.Title = "New Game";
+}
+
+<div class="container body-content">
+
+	<h2>NewGame</h2>
+
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken()
+
+		<div class="form-horizontal">
+			<hr />
+			@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.GameName, htmlAttributes: new { @class = "control-label" })
+				<div>
+					@Html.EditorFor(model => model.GameName, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.GameName, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.TourTime, htmlAttributes: new { @class = "control-label" })
+				<div>
+					@Html.EditorFor(model => model.TourTime, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.TourTime, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.IsHidden, htmlAttributes: new { @class = "control-label" })
+				<div>
+					@Html.EditorFor(model => model.IsHidden, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.IsHidden, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<div class="form-group" style="padding-top:20px">
+				<div>
+					<input type="submit" value="Create" class="btn btn-default" />
+				</div>
+			</div>
+		</div>
+	}
+
+</div>
+
+@section Scripts
+{
+	@Scripts.Render("~/bundles/jqueryval")
+}

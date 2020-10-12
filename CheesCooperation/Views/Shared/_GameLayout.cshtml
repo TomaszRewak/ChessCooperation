@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Game - Real Time Chess</title>
+    <meta name="description" content="Play chess with your friends as if you were face to face. See all their moves in the real time and let them see yours. No account required." />
+    <meta name="keywords" content="chess, real time" />
+    <meta name="author" content="Tomasz Rewak" />
+    <meta name="application-name" charset="Real Time Chess" />
+
+	@Styles.Render("~/Content/css")
+	@RenderSection("styles", false)
+	@Scripts.Render("~/bundles/modernizr")
+
+	<meta name="description" content="Real Time Chess" />
+</head>
+<body>
+	<!--<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li>@Html.ActionLink("Home", "Index", "Home")</li>
+					<li>@Html.ActionLink("About", "About", "Home")</li>
+					<li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+				</ul>
+			</div>
+		</div>
+	</div>-->
+	@RenderBody()
+	<!--<hr />
+	<footer>
+		<p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+	</footer>-->
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+	@Scripts.Render("~/bundles/analytics")
+	@RenderSection("scripts", required: false)
+</body>
+</html>
