@@ -8,3 +8,4 @@ In short: it’s an online chess game when both opponents can see each other’s
  
 A working example can be found here: http://realtimechess.azurewebsites.net/
 
+![Example](https://raw.githubusercontent.com/TomaszRewak/ChessCooperation/master/About/example.png)
